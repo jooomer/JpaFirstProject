@@ -12,16 +12,24 @@ public class App {
 	public static void main(String[] args) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-first-project");
-		EntityManager em = emf.createEntityManager();
+//		EntityManager em = emf.createEntityManager();
+				
+//		Product product = new Product();
+//		product.setName("Product 1");
+//		
+//		
+//		em.getTransaction().begin();
+//		em.persist(product);
+//		em.getTransaction().commit();
 		
-		em.s
+		
+//		Order order = new Order();
+//		order.getOrderItems().add(new OrderItem(productId, amount));
 		
 		
-		Product product = new Product();
-		product.setName("Product 1");
 		
-		Order order = new Order();
-		order.getOrderItems().add(new OrderItem(productId, amount));
+//		em.close();
+		emf.close();
 
 	}
 
