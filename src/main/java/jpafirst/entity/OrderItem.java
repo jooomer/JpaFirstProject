@@ -1,5 +1,6 @@
 package jpafirst.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,16 +20,25 @@ public class OrderItem {
 	private Long id;
 	
 	@Column(name = "product_id")
-	@OneToOne
-	@JoinColumn(name = "product_id")
 	private Long productId;
 	
-	@Column(name = "order_id")
-	@OneToOne
-	@JoinColumn(name = "order_id")
-	private Long orderId;
+//	@Column(name = "order_id")
+//	private Long orderId;
 	
 	private Double amount;
+	
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	private Order order;
+
+	public OrderItem() {}
+	
+	public OrderItem(Long productId, Double amount) {
+		this.productId = productId;
+		this.amount = amount;
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -46,13 +56,13 @@ public class OrderItem {
 		this.productId = productId;
 	}
 
-	public Long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
-	}
+//	public Long getOrderId() {
+//		return orderId;
+//	}
+//
+//	public void setOrderId(Long orderId) {
+//		this.orderId = orderId;
+//	}
 
 	public Double getAmount() {
 		return amount;

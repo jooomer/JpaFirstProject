@@ -1,11 +1,21 @@
 package jpafirst.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
+@Table(name = "products")
 public class Product {
 
 	@Id
@@ -13,6 +23,16 @@ public class Product {
 	private Long id;
 	
 	private String name;
+	
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(name = "order_item", 
+				joinColumns = { @JoinColumn(name = "product_id") },
+				inverseJoinColumns = { @JoinColumn(name = "order_id") })
+	private Set<Order> orders = new HashSet<>();
+
+	public Product(String name) {
+		this.name = name;
+	}
 
 	public Long getId() {
 		return id;
