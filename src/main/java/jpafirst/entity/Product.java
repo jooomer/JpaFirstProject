@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
@@ -29,6 +30,7 @@ public class Product {
 				joinColumns = { @JoinColumn(name = "product_id") },
 				inverseJoinColumns = { @JoinColumn(name = "order_id") })
 	private Set<Order> orders = new HashSet<>();
+	
 
 	public Product(String name) {
 		this.name = name;
@@ -49,4 +51,13 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+
 }

@@ -30,7 +30,7 @@ public class Order {
 	private Set<Product> products = new HashSet<>();
 	
 	@Column(name = "order_items")
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "order", cascade=CascadeType.PERSIST)
 	private Set<OrderItem> orderItems = new HashSet<>();
 	
 	public Order(String name) {

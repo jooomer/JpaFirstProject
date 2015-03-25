@@ -71,4 +71,12 @@ public class OrderItem {
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 }
